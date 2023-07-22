@@ -312,6 +312,7 @@ public class WebRTCActivity extends AppCompatActivity {
 
         //localView = findViewById(R.id.localView);
         localView = findViewById(R.id.surface_view);
+        localView.release(); // Release first so we can reconnect later
         localView.setMirror(true);
         localView.setEnableHardwareScaler(true);
         localView.init(eglBaseContext, null);
@@ -338,6 +339,7 @@ public class WebRTCActivity extends AppCompatActivity {
 
         //remoteView = findViewById(R.id.remoteView);
         remoteView = findViewById(R.id.surface_view2);
+        remoteView.release(); // Release first so we can reconnect later
         remoteView.setMirror(true);
         remoteView.setEnableHardwareScaler(true);
         remoteView.init(eglBaseContext, null);
