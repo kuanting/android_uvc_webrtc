@@ -129,6 +129,12 @@ public class WebRTCActivity extends AppCompatActivity {
     // String URL = "https://calm-badlands-59575.herokuapp.com/";
     private void connectSignalServer(String URL) {
         try {
+            if (socket != null) {
+                // Clearly leave the previous connection
+                sendMessage("bye");
+                socket.disconnect();
+            }
+
             socket = IO.socket(URL);
 
             socket.on(EVENT_CONNECT, args -> {
